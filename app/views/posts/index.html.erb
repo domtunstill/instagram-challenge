@@ -1,2 +1,19 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="col">
+<% @posts.each do |post| %>
+  <div style="width:500px; height:auto;" class="bg-light p-2 my-3">
+  <%= image_tag(post.image, style:"width:100%") if post.image.attached? %></div>
+
+  <div class="py-2">
+  <%= simple_format(post.message) %>
+  <p style="color:#cccccc;"> <%= post.created_at.strftime("%-d %b %Y at %H:%M") %></p>
+  <% @username = User.where(id: post.user_id).first&.send(:username) %>
+  <p><%= "by #{@username}"%></p>
+  </div>
+
+<% end %>
+
+<%= link_to new_post_path do %>
+  New post
+<% end %>
+
+</div>

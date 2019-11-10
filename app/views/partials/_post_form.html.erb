@@ -1,0 +1,8 @@
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :message, as: :text%>
+  <%= f.file_field :image, accept: 'image/png,image/jpeg' %>
+  <br><br>
+  <%= f.button :submit, 'Submit' %>
+
+<% end %>
